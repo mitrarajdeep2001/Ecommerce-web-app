@@ -1,0 +1,82 @@
+@import "../../../css-config/mixins.scss";
+
+.hero-banner{
+    padding-block: 40px;
+    background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+    position: relative;
+    @include md{
+        height: calc(100vh - 80px);
+    }
+    .content{
+        height: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin: 0 auto;
+        @include md{
+            justify-content: space-between;
+            align-items: normal;
+            flex-direction: row;
+            max-width: 1200px;
+        }
+        .banner-img{
+            width: 200px;
+            margin-bottom: 20px;
+            @include md{
+                width: 500px;
+                margin-bottom: 0;
+            }
+            @include xxl{
+                width: 600px;
+            }
+        }
+        .text-content{
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1{
+            font-size: 80px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 20px;
+            @include md{
+                font-size: 120px;
+            }
+        }
+        p{
+            max-width: 300px;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 20px;
+            @include md{
+                max-width: 500px;
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 40px;
+            }
+        }
+        .ctas{
+            display: flex;
+            gap: 20px;
+            .banner-cta{
+                font-size: 13px;
+                font-weight: 500;
+                text-transform: uppercase;
+                border: 2px solid white;
+                padding: 10px 20px;
+                cursor: pointer;
+                &.v2{
+                    color: black;
+                    background-color: white;
+                }
+                &:hover{
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+}

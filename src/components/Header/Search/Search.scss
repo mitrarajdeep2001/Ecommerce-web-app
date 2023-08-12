@@ -1,0 +1,118 @@
+@import "../../../css-config/mixins.scss";
+
+.search-modal{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: white;
+    transform: translateY(100%);
+    animation: slideUpSearchBar 0.3s ease forwards;
+    .form-field{
+        width: 100%;
+        padding: 10px 50px;
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        position: relative;
+        @include md{
+            padding: 20px 0;
+        }
+        input{
+            border: none;
+            outline: none;
+            width: 100%;
+            max-width: 1200px;
+            height: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+            color: #212121;
+            @include md{
+                font-size: 48px;
+                height: 80px;
+            }
+        }
+        svg{
+           font-size: 25px;
+           position: absolute;
+           right: 20px;
+           top: 50%;
+           transform: translateY(-50%);
+           cursor: pointer;
+           @include md{
+            font-size: 50px;
+           }
+        }
+    }
+    .search-result-content{
+        max-width: calc(100% - 20px);
+        margin: 0 auto;
+        @include md{
+            max-width: 800px;
+        }
+        .search-results{
+            height: calc(100vh - 110px);
+            overflow: auto;
+            margin: 20px 0;
+            @include md{
+                height: calc(100vh - 160px);
+            }
+        }
+        .search-result-item{
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 10px ;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            .img-container{
+                width: 60px;
+                height: 60px;
+                flex-shrink: 0;
+                background-color: rgba(0, 0, 0, 0.05);
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .product-details{
+                overflow: hidden;
+                .name{
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    font-size: 16px;
+                    line-height: 1;
+                    margin-bottom: 10px;
+                    padding-right: 25px;
+                    font-weight: 600;
+                    display: block;
+                }
+                .desc{
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    font-size: 14px;
+                    display: block;
+                    line-height: 1;
+                }
+            }
+            &:hover{
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+}
+
+@keyframes slideUpSearchBar {
+    0%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}

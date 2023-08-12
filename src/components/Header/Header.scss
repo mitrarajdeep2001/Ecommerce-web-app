@@ -1,0 +1,86 @@
+@import "../../css-config/mixins.scss";
+
+.main-header{
+    width: 100%;
+    padding: 0 20px;
+    background-color: #212121;
+    color: white;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 99;
+    @include md{
+        padding: 0 40px;
+    }
+    .header-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        max-width: 1200px;
+        margin: 0 auto;
+        @include md{
+            height: 80px;
+        }
+        .left{
+            display: none;
+            gap: 25px;
+            list-style: none;
+            @include md{
+                display: flex;
+            }
+            li{
+                font-weight: 600;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+        }
+        .center{
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+            @include md{
+                font-size: 34px;
+            }
+        }
+        .right{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 20px;
+            padding-right: 12px;
+            @include md{
+                gap: 25px;
+                font-size: 25px;
+            }
+            .cart-icon{
+                position: relative;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                span{
+                    min-width: 20px;
+                    text-align: center;
+                    background-color: #8e2de2;
+                    padding: 2.5px;
+                    font-size: 12px;
+                    line-height: 1;
+                    border-radius: 10px;
+                    position: absolute;
+                    top: -5px;
+                    right: -12px;
+                }
+            }
+        }
+    }
+
+    &.sticky-header{
+        position: sticky;
+        top: 0;
+        transform: translateY(-80px);
+        animation: stickyHeader 0.3s ease forwards;
+    }
+}
+
+@keyframes stickyHeader{
+    0%{transform: translateY(-80px);}
+    100%{transform: translateY(0);}
+}
