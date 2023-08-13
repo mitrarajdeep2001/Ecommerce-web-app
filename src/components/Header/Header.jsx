@@ -7,6 +7,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import Search from "./Search/Search";
 import Cart from "../Cart/Cart";
 import { useAppContext } from "../../utils/context";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -14,6 +15,7 @@ const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
   const { cartCounts } = useAppContext();
+  const { loginWithRedirect, user, logout } = useAuth0();
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -23,9 +25,12 @@ const Header = () => {
       setScrolled(false);
     }
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   }, []);
+
+  user && console.log(user);
   return (
     <>
       <header className={`main-header ${scrolled ? "sticky-header" : ""}`}>
@@ -33,7 +38,8 @@ const Header = () => {
           <ul className="left">
             <li onClick={() => navigate("/")}>Home</li>
             <li onClick={() => navigate("/about")}>About</li>
-            <li onClick={""}>Login</li>
+            {!user && <li onClick={() => loginWithRedirect()}>Login</li>}
+            {user && <li onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Logout</li>}
           </ul>
           <div className="center" onClick={() => navigate("/")}>
             Shopper'sHub
