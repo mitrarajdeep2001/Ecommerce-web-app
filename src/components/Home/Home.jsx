@@ -1,4 +1,4 @@
-import Product from "../Products/Products";
+import Products from "../Products/Products";
 import Category from "../Home/Category/Category";
 import Banner from "./Banner/Banner";
 import "./Home.scss";
@@ -11,18 +11,18 @@ const Home = () => {
 
   useEffect(() => {
     getCategories();
-    getProducts()
+    getProducts();
   }, []);
 
   const getCategories = () => {
-    fetchDataFromApi("/api/categories?populate=*").then((res) => {
-      setCategories(res)
+    fetchDataFromApi("/products/categories").then((res) => {
+      setCategories(res);
     });
   };
- 
+
   const getProducts = () => {
-    fetchDataFromApi("/api/products?populate=*").then((res) => {
-      setProducts(res)
+    fetchDataFromApi("/products").then((res) => {
+      setProducts(res);
     });
   };
   return (
@@ -30,8 +30,8 @@ const Home = () => {
       <Banner />
       <div className="main-content">
         <div className="layout">
-          <Category categories={categories}/>
-          <Product products={products} headingText="Popular Products" />
+          <Category categories={categories} />
+          <Products products={products} headingText="Popular Products" />
         </div>
       </div>
     </div>

@@ -6,13 +6,13 @@ const Banner = () => {
             <div className="content">
                 <div className="text-content">
                     <h1>nura-500</h1>
-                    <p>This is a ecommerce website.This is a ecommerce website.This is a ecommerce website.This is a ecommerce website.This is a ecommerce website.This is a ecommerce website.</p>
+                    <p>Earbuds that listen to how you hear, then build a sonic profile that’s unique to you.</p>
                     <div className="ctas">
                         <div className="banner-cta">Read More</div>
                         <div className="banner-cta v2">Shop Now</div>
                     </div>
                 </div>
-                <img className="banner-img" src={BannerImg} alt=""/>
+                <img className="banner-img" src={BannerImg} alt="banner_img"/>
             </div>
         </div>
     );

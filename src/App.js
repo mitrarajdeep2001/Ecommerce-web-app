@@ -6,7 +6,7 @@ import Home from "../src/components/Home/Home";
 import Category from "../src/components/Category/Category";
 import SingleProduct from "../src/components/SingleProduct/SingleProduct";
 import AppContextProvider from "./utils/context";
-import Contact from "./components/Contact/Contact";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/category/:id" element={<Category />} />
           <Route path="/product/:id" element={<SingleProduct />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <Newsletter />
         <Footer />

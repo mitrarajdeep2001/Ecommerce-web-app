@@ -24,11 +24,9 @@ const SingleProduct = () => {
 
   //Get product details
   const getProductDetails = () => {
-    fetchDataFromApi(`/api/products?populate=*&[filters][id]=${id}`).then(
-      (res) => {
-        setProduct(res);
-      }
-    );
+    fetchDataFromApi(`/products/${id}`).then((res) => {
+      setProduct(res);
+    });
   };
 
   //Increment quantity
@@ -48,21 +46,12 @@ const SingleProduct = () => {
       <div className="layout">
         <div className="single-product-page">
           <div className="left">
-            <img
-              src={
-                product?.data?.[0]?.attributes?.images?.data?.[0]?.attributes?.url
-              }
-              alt="prod_img"
-            />
+            <img src={product.image} alt="prod_img" />
           </div>
           <div className="right">
-            <span className="name">
-              {product?.data?.[0]?.attributes?.title}
-            </span>
-            <span className="price">
-              &#8377;{product?.data?.[0]?.attributes?.price}
-            </span>
-            <span className="desc">{product?.data?.[0]?.attributes?.desc}</span>
+            <span className="name">{product.title}</span>
+            <span className="price">&#8377;{product.price}</span>
+            <span className="desc">{product.description}</span>
             <div className="card-buttons">
               <div className="quantity-buttons">
                 <span onClick={decrement}>-</span>
@@ -72,7 +61,7 @@ const SingleProduct = () => {
               <button
                 className="add-to-card-button"
                 onClick={() => {
-                  handleAddToCart(product.data[0], quantity);
+                  handleAddToCart(product, quantity);
                   setQuantity(1);
                 }}
               >
@@ -83,13 +72,7 @@ const SingleProduct = () => {
             <span className="divider"></span>
             <span className="info-item">
               <div className="text-bold">
-                category:{" "}
-                <span>
-                  {
-                    product?.data?.[0]?.attributes?.categories?.data?.[0]
-                      ?.attributes?.title
-                  }
-                </span>
+                category: <span>{product.category}</span>
               </div>
               <div className="text-bold">
                 Share:{" "}
@@ -104,13 +87,10 @@ const SingleProduct = () => {
             </span>
           </div>
         </div>
-        <RelatedProducts
-          productId={id}
-          categoryId={product?.data?.[0]?.attributes?.categories?.data?.[0]?.id}
-        />
+        <RelatedProducts category={product.category} productID={+id}/>
       </div>
     </div>
   );
-};
+}; 
 
 export default SingleProduct;

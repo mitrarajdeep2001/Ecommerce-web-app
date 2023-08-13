@@ -9,22 +9,35 @@ const Search = ({ setShowSearch }) => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
-  //Handle input change
-  const handleChange = (e) => {
-    setQuery(e.target.value);
-  };
+  useEffect((e) => {
+    getProducts();
+  }, []);
 
   useEffect(() => {
-    searchProducts();
+    searchQuery(query);
   }, [query]);
 
-  const searchProducts = async () => {
-    const res = await fetchDataFromApi(
-      `/api/products?populate=*&[filters][title][$contains]=${query}`
-    );
+  //Get all products
+  const getProducts = async () => {
+    const res = await fetchDataFromApi(`/products`);
     setData(res);
   };
 
+  //Handle search
+  const searchQuery = async (query) => {
+    let items = [...data];
+    items = items.filter((item) => item.title.toLowerCase().includes(query));
+    setData(items);
+  };
+
+  //Handle input change & check key type
+  const handleChange = (e) => {
+    console.log(e.nativeEvent.inputType);
+    if (e.nativeEvent.inputType === "deleteContentBackward") {
+      getProducts();
+    }
+    setQuery(e.target.value);
+  };
   return (
     <div className="search-modal">
       <div className="form-field">
@@ -40,7 +53,7 @@ const Search = ({ setShowSearch }) => {
       <div className="search-result-content">
         <div className="search-results">
           {query.length !== 0 &&
-            data?.data?.map((item) => (
+            data.map((item) => (
               <div
                 key={item.id}
                 className="search-result-item"
@@ -50,14 +63,11 @@ const Search = ({ setShowSearch }) => {
                 }}
               >
                 <div className="img-container">
-                  <img
-                    src={item.attributes.images.data[0].attributes.url}
-                    alt="searched_product"
-                  />
+                  <img src={item.image} alt="searched_product" />
                 </div>
                 <div className="product-details">
-                  <span className="name">{item.attributes.title}</span>
-                  <span className="desc">{item.attributes.desc}</span>
+                  <span className="name">{item.title}</span>
+                  <span className="desc">{item.description}</span>
                 </div>
               </div>
             ))}

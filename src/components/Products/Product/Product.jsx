@@ -6,7 +6,7 @@ const Product = ({data, id}) => {
   return (
     <div className="product-card" onClick={() => navigate("/product/"+id)}>
       <div className="thumbnail">
-        <img src={data?.images?.data?.[0]?.attributes?.url} alt="prod_img"/>
+        <img src={data.image} alt="prod_img"/>
       </div>
         <div className="prod-details">
           <span className="name">{data.title}</span>
@@ -15,5 +15,5 @@ const Product = ({data, id}) => {
     </div>
   );
 };
-
+ 
 export default Product;

@@ -37,7 +37,7 @@ const Cart = ({ setShowCart }) => {
             <div className="cart-footer">
               <div className="subtotal">
                 <span className="text">Subtotal:</span>
-                <span className="text total">&#8377;{cartSubTotatl}</span>
+                <span className="text total">&#8377;{cartSubTotatl.toFixed(2)}</span>
               </div>
               <div className="button">
                 <button className="checkout-cta">Checkout</button>
@@ -49,5 +49,5 @@ const Cart = ({ setShowCart }) => {
     </div>
   );
 };
-
+ 
 export default Cart;

@@ -52,7 +52,7 @@ const Footer = () => {
       <div className="bottom-bar">
         <div className="bottom-bar-content">
           <div className="text">
-            Gen-Z Tech.com | Created by Rajdeep Mitra | Copyright &copy; 2023
+            Shopper'sHub.com | Created by Rajdeep Mitra | Copyright &copy; 2023
           </div>
           <img src={Payment} alt="" />
         </div>

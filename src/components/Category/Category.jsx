@@ -6,28 +6,31 @@ import { useAppContext } from "../../utils/context";
 import { useParams } from "react-router-dom";
 
 const Category = () => {
-  const { products, setProducts } = useAppContext();
+  const { products, setProducts, category, setCategory } = useAppContext();
   const { id } = useParams();
+
   useEffect(() => {
-    getProducts();
+    getCategories();
   }, [id]);
 
+  useEffect(() => {
+    getProducts();
+  }, [category]);
+
+  const getCategories = () => {
+    fetchDataFromApi(`/products/categories`).then((res) => {
+      setCategory(res[id - 1]);
+    });
+  };
   const getProducts = () => {
-    fetchDataFromApi(
-      `/api/products?populate=*&[filters][categories][id]=${id}`
-    ).then((res) => {
+    fetchDataFromApi(`/products/category/${category}`).then((res) => {
       setProducts(res);
     });
   };
   return (
     <div className="category-main-content">
       <div className="layout">
-        <div className="category-title">
-          {
-            products?.data?.[0]?.attributes?.categories?.data?.[0]?.attributes
-              ?.title
-          }
-        </div>
+        <div className="category-title">{category}</div>
         <Products innerPage={true} products={products} />
       </div>
     </div>

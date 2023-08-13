@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 const AppContext = createContext();
 const AppContextProvider = ({ children }) => {
   const [categories, setCategories] = useState("");
+  const [category, setCategory] = useState("");
   const [products, setProducts] = useState("");
   const [product, setProduct] = useState("");
   const [cartItems, setCartItems] = useState([]);
@@ -18,7 +19,7 @@ const AppContextProvider = ({ children }) => {
     let subTotal = 0,
       count = 0;
     cartItems.forEach((item) => {
-      subTotal += item.quantity * item.attributes.price;
+      subTotal += item.quantity * item.price;
       count += item.quantity;
     });
     setCartSubTotal(subTotal);
@@ -60,6 +61,8 @@ const AppContextProvider = ({ children }) => {
   const value = {
     categories,
     setCategories,
+    category,
+    setCategory,
     products,
     setProducts,
     product,

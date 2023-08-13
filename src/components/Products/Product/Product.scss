@@ -15,12 +15,13 @@
         padding: 25px;
         display: flex;
         align-items: center;
+        justify-content: center;
         @include md{
             height: 350px;
         }
         img{
             display: block;
-            width: 100%;
+            width: 70%;
             transition: all ease 0.3s;
         }
     }

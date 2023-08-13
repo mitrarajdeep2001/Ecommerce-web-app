@@ -2,22 +2,36 @@ import { useEffect } from "react";
 import Products from "../../Products/Products";
 import { fetchDataFromApi } from "../../../utils/api";
 import { useAppContext } from "../../../utils/context";
+import { Vortex } from "react-loader-spinner";
 
-const RelatedProducts = ({ productId, categoryId }) => {
+const RelatedProducts = ({ category, productID }) => {
   const { products, setProducts } = useAppContext();
   useEffect(() => {
     getProducts();
-  }, [productId, categoryId]);
+  }, [category, productID]);
+
   const getProducts = () => {
-    fetchDataFromApi(
-      `/api/products?populate=*&filters[id][$ne]=${productId}&filters[categories][id]=${categoryId}&paginationId[start]=0&pagination[limit]=4`
-    ).then((res) => {
-      setProducts(res);
+    fetchDataFromApi(`/products/category/${category}`).then((res) => {
+      setProducts(res.filter((e) => e.id !== productID).slice(0, 4));
     });
   };
   return (
     <div className="related-products">
-      <Products headingText="Related Products" products={products} />
+      {products ? (
+        <Products headingText="Related Products" products={products} />
+      ) : (
+        <div className="loader">
+          <Vortex
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="vortex-loading"
+            wrapperStyle={{}}
+            wrapperClass="vortex-wrapper"
+            colors={["red", "green", "blue", "yellow", "orange", "purple"]}
+          />
+        </div>
+      )}
     </div>
   );
 };

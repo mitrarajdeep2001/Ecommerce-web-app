@@ -32,11 +32,11 @@ const Header = () => {
         <div className="header-content">
           <ul className="left">
             <li onClick={() => navigate("/")}>Home</li>
-            <li>About</li>
-            <li onClick={() => navigate("/contact")}>Contact</li>
+            <li onClick={() => navigate("/about")}>About</li>
+            <li onClick={""}>Login</li>
           </ul>
           <div className="center" onClick={() => navigate("/")}>
-            Gen-Z Tech
+            Shopper'sHub
           </div>
           <div className="right">
             <TbSearch
