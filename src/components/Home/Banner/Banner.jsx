@@ -7,6 +7,7 @@ const Banner = () => {
                 <div className="text-content">
                     <h1>nura-500</h1>
                     <p>Earbuds that listen to how you hear, then build a sonic profile that’s unique to you.</p>
+                    <div className="comming-soon">Comming Soon!</div>
                     <div className="ctas">
                         <div className="banner-cta">Read More</div>
                         <div className="banner-cta v2">Shop Now</div>

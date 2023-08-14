@@ -51,12 +51,25 @@
             max-width: 300px;
             font-size: 14px;
             line-height: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             @include md{
                 max-width: 500px;
                 font-size: 18px;
                 line-height: 24px;
-                margin-bottom: 40px;
+                margin-bottom: 20px;
+            }
+        }
+        .comming-soon{
+            color: #fff;
+            background-color: red;
+            font-weight: bold;
+            padding: 10px 20px;
+            margin-bottom: 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: default;
+            &:hover{
+                opacity: 0.8;
             }
         }
         .ctas{

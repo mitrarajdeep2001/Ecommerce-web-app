@@ -1,3 +1,4 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -7,15 +8,24 @@ const AppContextProvider = ({ children }) => {
   const [category, setCategory] = useState("");
   const [products, setProducts] = useState("");
   const [product, setProduct] = useState("");
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(
+   JSON.parse(localStorage.getItem("cartItems")) || []
+  );
   const [cartCounts, setCartCounts] = useState(0);
   const [cartSubTotatl, setCartSubTotal] = useState(0);
   const location = useLocation();
+  const { user } = useAuth0();
 
   //Scroll to the top of the page when route change in the url
   useEffect(() => window.scrollTo(0, 0), [location]);
 
   useEffect(() => {
+    if (user && cartItems.length > 0 && localStorage) {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+    if (!user) {
+      localStorage.setItem("cartItems", JSON.stringify([]));
+    }
     let subTotal = 0,
       count = 0;
     cartItems.forEach((item) => {
@@ -24,7 +34,7 @@ const AppContextProvider = ({ children }) => {
     });
     setCartSubTotal(subTotal);
     setCartCounts(count);
-  }, [cartItems]);
+  }, [cartItems, user]);
 
   //Add product to the cart
   const handleAddToCart = (product, quantity) => {
