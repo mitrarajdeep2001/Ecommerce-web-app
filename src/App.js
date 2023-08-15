@@ -7,10 +7,13 @@ import Category from "../src/components/Category/Category";
 import SingleProduct from "../src/components/SingleProduct/SingleProduct";
 import AppContextProvider from "./utils/context";
 import About from "./components/About/About";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <BrowserRouter>
+      <ToastContainer />
       <AppContextProvider>
         <Header />
         <Routes>

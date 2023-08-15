@@ -4,15 +4,16 @@ import { BsCartX } from "react-icons/bs";
 import CartItem from "./CartItem/CartItem";
 import { useAppContext } from "../../utils/context";
 import { useNavigate } from "react-router-dom";
+import SimulatedPayment from "./PaymentGateway/SimulatedPayment";
 
 const Cart = ({ setShowCart }) => {
   const { cartSubTotatl, cartItems } = useAppContext();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleReturnCTA = () => {
-    navigate("/")
-    setShowCart(false)
-  }
+    navigate("/");
+    setShowCart(false);
+  };
   return (
     <div className="cart-panel">
       <div className="opac-layer"></div>
@@ -28,7 +29,9 @@ const Cart = ({ setShowCart }) => {
           <div className="empty-cart">
             <BsCartX />
             <span>No products in the cart.</span>
-            <button className="return-cta" onClick={handleReturnCTA}>RETURN TO SHOP</button>
+            <button className="return-cta" onClick={handleReturnCTA}>
+              RETURN TO SHOP
+            </button>
           </div>
         )}
         {cartItems.length > 0 && (
@@ -37,10 +40,12 @@ const Cart = ({ setShowCart }) => {
             <div className="cart-footer">
               <div className="subtotal">
                 <span className="text">Subtotal:</span>
-                <span className="text total">&#8377;{cartSubTotatl.toFixed(2)}</span>
+                <span className="text total">
+                  &#8377;{cartSubTotatl.toFixed(2)}
+                </span>
               </div>
               <div className="button">
-                <button className="checkout-cta">Checkout</button>
+                <SimulatedPayment amount={cartSubTotatl.toFixed(2)}/>
               </div>
             </div>
           </>
@@ -49,5 +54,5 @@ const Cart = ({ setShowCart }) => {
     </div>
   );
 };
- 
+
 export default Cart;

@@ -9,12 +9,12 @@ const AppContextProvider = ({ children }) => {
   const [products, setProducts] = useState("");
   const [product, setProduct] = useState("");
   const [cartItems, setCartItems] = useState(
-   JSON.parse(localStorage.getItem("cartItems")) || []
+    JSON.parse(localStorage.getItem("cartItems")) || []
   );
   const [cartCounts, setCartCounts] = useState(0);
   const [cartSubTotatl, setCartSubTotal] = useState(0);
   const location = useLocation();
-  const { user } = useAuth0();
+  const { user, isLoading } = useAuth0();
 
   //Scroll to the top of the page when route change in the url
   useEffect(() => window.scrollTo(0, 0), [location]);
@@ -22,9 +22,6 @@ const AppContextProvider = ({ children }) => {
   useEffect(() => {
     if (user && cartItems.length > 0 && localStorage) {
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    }
-    if (!user) {
-      localStorage.setItem("cartItems", JSON.stringify([]));
     }
     let subTotal = 0,
       count = 0;
@@ -36,6 +33,14 @@ const AppContextProvider = ({ children }) => {
     setCartCounts(count);
   }, [cartItems, user]);
 
+  //On logout make the cart empty
+  useEffect(() => {
+    if (!user && !isLoading) {
+      localStorage.setItem("cartItems", JSON.stringify([]));
+      setCartItems([]);
+    }
+  }, [user, isLoading]);
+  
   //Add product to the cart
   const handleAddToCart = (product, quantity) => {
     let items = [...cartItems];

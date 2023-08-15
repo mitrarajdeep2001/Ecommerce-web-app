@@ -26,19 +26,41 @@
             list-style: none;
             @include md{
                 display: flex;
+                height: 100%;
+                align-items: center;
             }
             li{
                 font-weight: 600;
                 text-transform: uppercase;
                 cursor: pointer;
+                &.greet-user{
+                    padding: 5px;
+                    background-color: #8e2de2;
+                    border: none;
+                    border-radius: 5px;
+                    text-transform: capitalize;
+                }
             }
         }
         .center{
+            display: flex;
+            align-items: center;
+            gap: 5px;
             font-size: 22px;
             font-weight: 700;
+            height: 100%;
             cursor: pointer;
             @include md{
                 font-size: 34px;
+            }
+            ul{
+                list-style: none;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                @include md{
+                    display: none;
+                }
             }
         }
         .right{

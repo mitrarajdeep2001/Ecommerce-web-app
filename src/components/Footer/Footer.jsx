@@ -1,6 +1,7 @@
 import { FaEnvelope, FaLocationArrow, FaMobileAlt } from "react-icons/fa";
 import "./Footer.scss";
 import Payment from "../../assets/payments.png";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footer">
@@ -8,9 +9,13 @@ const Footer = () => {
         <div className="col">
           <div className="title">About</div>
           <div className="text">
-            This is a text.This is a text.This is a text.This is a text.This is
-            a text.This is a text.This is a text.This is a text.vThis is a
-            text.This is a text.This is a text.
+            Welcome to Shopper'sHub! We're thrilled to have you here and
+            introduce you to a world of endless possibilities in online
+            shopping. At Shopper'sHub, we believe that shopping is more than
+            just acquiring products – it's an experience, a journey, and a way
+            to express yourself. We've crafted this platform with utmost care,
+            blending innovation, convenience, and a touch of magic to create an
+            online shopping destination like no other. <button className="read-more" ><Link to="/about">Read More</Link></button>
           </div>
         </div>
         <div className="col">
@@ -32,12 +37,10 @@ const Footer = () => {
         </div>
         <div className="col">
           <div className="title">Categories</div>
-          <span className="text">Headphone</span>
-          <span className="text">Smart Watches</span>
-          <span className="text">Bluetooth Speakers</span>
-          <span className="text">Wireless Earbuds</span>
-          <span className="text">Home Theatres</span>
-          <span className="text">Projectors</span>
+          <span className="text">Electronics</span>
+          <span className="text">Jewellery</span>
+          <span className="text">Men's Clothing</span>
+          <span className="text">Women's Clothing</span>
         </div>
         <div className="col">
           <div className="title">Pages</div>
@@ -54,7 +57,7 @@ const Footer = () => {
           <div className="text">
             Shopper'sHub.com | Created by Rajdeep Mitra | Copyright &copy; 2023
           </div>
-          <img src={Payment} alt="" />
+          <img src={Payment} alt="payment_partners_img" />
         </div>
       </div>
     </footer>

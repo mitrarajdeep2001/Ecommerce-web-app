@@ -1,5 +1,6 @@
 .cart-products{
     flex-grow: 1;
+    overflow-y: auto;
     .cart-product{
         padding: 20px 15px;
         display: flex;

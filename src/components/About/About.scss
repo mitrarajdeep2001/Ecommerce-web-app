@@ -1,0 +1,29 @@
+@import "../../css-config/mixins.scss";
+
+.about-main{
+    width: 100%;
+    .about-container{
+        margin: 30px;
+        @include md{
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+        h2{
+            margin-block: 10px;
+        }
+        ul{
+            li{
+                margin-top: 10px;
+                span{
+                    font-weight: bold;
+                }
+            }
+        }
+        .ask-for-feedback{
+            margin-top: 10px;
+        }
+        .greet{
+            margin-block: 10px;
+        }
+    }
+}
