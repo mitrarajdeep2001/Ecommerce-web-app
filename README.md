@@ -1,6 +1,6 @@
 # Shopper'sHub E-commerce Website
 
-![Shopper'sHub Logo](logo.png)
+![Shopper'sHub Logo](https://github.com/mitrarajdeep2001/Ecommerce-web-app/blob/master/Screenshot%20(66).png)
 
 Welcome to **Shopper'sHub**, your one-stop destination for a seamless online shopping experience. Our platform offers a diverse range of products spanning across electronics, jewellery, men's clothing, and women's clothing. With a user-friendly interface, secure authentication, convenient shopping cart management, and reliable payment integration, Shopper'sHub ensures that your online shopping journey is both enjoyable and hassle-free.
 
