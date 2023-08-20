@@ -2,8 +2,10 @@ import React from "react";
 import "./SimulatedPayment.scss";
 import { notifyError, notifySuccess } from "../../../utils/notify";
 import { useAuth0 } from "@auth0/auth0-react";
+import {useAppContext} from "../../../utils/context"
 
 function SimulatedPayment({ amount }) {
+  const {setCartItems} = useAppContext()
   const { user } = useAuth0();
   const simulatePayment = () => {
     if (!user) {
@@ -20,6 +22,7 @@ function SimulatedPayment({ amount }) {
       handler: function (response) {
         if (response.razorpay_payment_id) {
           notifySuccess("Payment Successful!");
+          setCartItems([])
         } else {
           notifyError("Payment failed!");
         }
